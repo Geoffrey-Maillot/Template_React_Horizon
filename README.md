@@ -1,14 +1,4 @@
-# Tuto React query
-
-## Notions vu dans ce projet
-
-- Typescript
-- React query
-- React hook form
-- Storybook
-
-- Context react
-- Custom hook
+# Tuto Horizon React
 
 ## Lancer le projet
 
