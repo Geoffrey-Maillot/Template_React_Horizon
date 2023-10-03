@@ -1,0 +1,43 @@
+//.p-toast.p-toast {
+//  :global(.p-toast-message) {
+//    :global(.p-toast-message-content .p-toast-detail) {
+//      margin-top: 0;
+//    }
+//    &:global(.p-toast-message-success) {
+//      background: lighten($success, 40%);
+//      border-left: 4px $success solid;
+//      color: $success;
+//      :global(.p-toast-message-icon),
+//      :global(.p-toast-icon-close) {
+//        color: $success;
+//      }
+//    }
+//    &:global(.p-toast-message-info) {
+//      background: lighten($info, 49%);
+//      border-left: 4px $info solid;
+//      color: $info;
+//      :global(.p-toast-message-icon),
+//      :global(.p-toast-icon-close) {
+//        color: $info;
+//      }
+//    }
+//    &:global(.p-toast-message-error) {
+//      background: lighten($danger, 40%);
+//      border-left: 4px $danger solid;
+//      color: $danger;
+//      :global(.p-toast-message-icon),
+//      :global(.p-toast-icon-close) {
+//        color: $danger;
+//      }
+//    }
+//    &:global(.p-toast-message-warn) {
+//      background: lighten($warning, 40%);
+//      border-left: 4px $warning solid;
+//      color: $warning;
+//      :global(.p-toast-message-icon),
+//      :global(.p-toast-icon-close) {
+//        color: $warning;
+//      }
+//    }
+//  }
+//}

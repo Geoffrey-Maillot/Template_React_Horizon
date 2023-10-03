@@ -1,0 +1,62 @@
+import { useGetUsers } from "@data-access";
+import { ContainerUserList } from "./ContainerUserList";
+import { SkeletonUserList } from "./SkeletonUserList";
+import { Button } from "primereact/button";
+import type { UserType } from "@src/interface";
+import { User } from "@src/components/libs/user/user";
+import { Dispatch, SetStateAction } from "react";
+
+interface UserListProps {
+  selectUser: Dispatch<SetStateAction<number>>;
+  idUserLogged: number;
+  idSelectedUser: number;
+}
+
+export function Users({
+  selectUser,
+  idUserLogged,
+  idSelectedUser,
+}: UserListProps) {
+  const {
+    data: dataUsers,
+    isLoading: isLoadingUsers,
+    isError: isErrorUsers,
+    refetch: refetchUser,
+  } = useGetUsers();
+  const users: Array<UserType> = dataUsers || [];
+
+  if (isLoadingUsers) {
+    return (
+      <ContainerUserList>
+        <SkeletonUserList />
+      </ContainerUserList>
+    );
+  }
+
+  if (isErrorUsers) {
+    <ContainerUserList>
+      <div>
+        <p>Une erreur s'est produite pendsant le chargement des données</p>
+        <Button onClick={() => refetchUser()}>Réessayer</Button>
+      </div>
+    </ContainerUserList>;
+  }
+
+  return (
+    <ContainerUserList>
+      {users.length > 0 ? (
+        users.map((user) => (
+          <User
+            key={user.id}
+            selectUser={selectUser}
+            {...user}
+            isLogged={idUserLogged === user.id}
+            isSelected={idSelectedUser === user.id}
+          />
+        ))
+      ) : (
+        <p>Aucun utilisateur</p>
+      )}
+    </ContainerUserList>
+  );
+}

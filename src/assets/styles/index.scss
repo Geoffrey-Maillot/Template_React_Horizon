@@ -1,0 +1,12 @@
+@import "./primereact.scss";
+@import "./tailwind.css";
+@import "./mixins";
+
+* {
+  @include customScrollBar();
+}
+
+root,
+body {
+  background-color: #fff;
+}
