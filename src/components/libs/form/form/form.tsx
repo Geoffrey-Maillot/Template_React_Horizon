@@ -16,6 +16,9 @@ interface Props extends PropsWithChildren {
 export function Form({ children, postId, userId }: Props) {
   const { data: dataPost } = useGetPost(postId);
 
+  const sideEffect = () => {
+    alert("Salut");
+  };
   const { mutate: modifyPost } = usePatchPostUser(postId);
   const { mutate: addPost } = useAddPostUser(userId);
 
@@ -31,13 +34,13 @@ export function Form({ children, postId, userId }: Props) {
     },
   });
 
+  const { handleSubmit, reset } = methods;
+
   useEffect(() => {
     if (dataPost) {
       reset({ ...dataPost });
     }
   }, [dataPost]);
-
-  const { handleSubmit, reset } = methods;
 
   const onSubmit = (post: Post) => {
     if (postId) {

@@ -24,7 +24,27 @@ pnpm run dev
 
 ```bash
 
-npm run storybook
+pnpm run storybook
 
 # Serveur lancer sur le port 3000
 ```
+
+## Points non abordé 
+
+### React
+
+- Custom hook
+- Organisation (petits composant : Séparé les constant / hook / interface)
+
+### React hook form
+
+- setState
+- watch
+
+### React query
+
+- Custom hook useMutation
+
+### Nx
+
+- Nx 

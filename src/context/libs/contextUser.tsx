@@ -1,5 +1,5 @@
 import { UserType } from "@src/interface";
-import { createContext, useContext, useState } from "react";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
 
 interface UserLogged extends Pick<UserType, "username" | "id"> {}
 
@@ -10,7 +10,7 @@ const userContext = createContext<{
 }>(null);
 
 //Provider
-const UserProvider = ({ children }: { children: JSX.Element }) => {
+const UserProvider = ({ children }: PropsWithChildren) => {
   const [loggedUser, setLoggedUser] = useState<UserLogged>();
 
   const logIn = (user: UserLogged) => {

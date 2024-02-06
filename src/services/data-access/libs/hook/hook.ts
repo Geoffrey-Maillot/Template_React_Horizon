@@ -61,6 +61,7 @@ export const useDeletePostUser = (userId) => {
 export const usePatchPostUser = (postId: number) => {
   const queryCache = useQueryClient();
   const displayToast = useToastContext();
+
   return useMutation(patchPost, {
     onSuccess: () => {
       displayToast({
@@ -68,7 +69,7 @@ export const usePatchPostUser = (postId: number) => {
         summary: "Succès",
         detail: "L'article a été modifier.",
       });
-      queryCache.invalidateQueries(["userPosts", postId]);
+      queryCache.invalidateQueries(["getPost", postId]);
     },
     onError: (error) => {
       console.error(error);

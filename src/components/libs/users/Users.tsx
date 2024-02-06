@@ -2,7 +2,7 @@ import { useGetUsers } from "@data-access";
 import { ContainerUserList } from "./ContainerUserList";
 import { SkeletonUserList } from "./SkeletonUserList";
 import { Button } from "primereact/button";
-import type { UserType } from "@src/interface";
+
 import { User } from "@src/components/libs/user/user";
 import { Dispatch, SetStateAction } from "react";
 
@@ -18,12 +18,11 @@ export function Users({
   idSelectedUser,
 }: UserListProps) {
   const {
-    data: dataUsers,
+    data: dataUsers = [],
     isLoading: isLoadingUsers,
     isError: isErrorUsers,
     refetch: refetchUser,
   } = useGetUsers();
-  const users: Array<UserType> = dataUsers || [];
 
   if (isLoadingUsers) {
     return (
@@ -44,8 +43,8 @@ export function Users({
 
   return (
     <ContainerUserList>
-      {users.length > 0 ? (
-        users.map((user) => (
+      {dataUsers.length > 0 ? (
+        dataUsers.map((user) => (
           <User
             key={user.id}
             selectUser={selectUser}
