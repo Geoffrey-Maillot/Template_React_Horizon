@@ -3,6 +3,13 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { ProtectedRoute, WithSuspense } from "@hoc";
 
 import { useLoggedUser } from "@src/context/libs/contextUser";
+import {
+  Convertisseur,
+  Count,
+  HeaderRappelReact,
+  Increment,
+  Todo,
+} from "@components";
 
 const PostsPage = WithSuspense(
   lazy(() =>
@@ -39,6 +46,13 @@ export const Router = () => {
           </ProtectedRoute>
         }
       />
+
+      <Route path="/rappel" element={<HeaderRappelReact />}>
+        <Route path="count" element={<Count />} />
+        <Route path="todo" element={<Todo />} />
+        <Route path="increment" element={<Increment />} />
+        <Route path="convertisseur" element={<Convertisseur />} />
+      </Route>
 
       <Route path="*" element={<div>Error</div>} />
     </Routes>
