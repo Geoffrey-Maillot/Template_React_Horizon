@@ -10,7 +10,7 @@ export const getUsers = () => {
 };
 
 export const getUserPost = (userId: number) => {
-  return fetch(`http://localhost:3000/user/${userId}/posts?limit=5`).then(
+  return fetch(`http://localhost:3000/posts?userId=${userId}limit=5`).then(
     (response) => response.json(),
   );
 };

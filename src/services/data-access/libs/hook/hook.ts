@@ -7,7 +7,7 @@ import {
   addPost,
   patchPost,
 } from "../api/api";
-import { Post, UserType } from "@interface";
+import { Post, User } from "@interface";
 import { useToastContext } from "@src/components";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
  * User
  */
 export const useGetUsers = () => {
-  return useQuery<Array<UserType>, Error>(["users"], getUsers);
+  return useQuery<Array<User>, Error>(["users"], getUsers);
 };
 
 export const useGetPostsUser = (userId: number) => {

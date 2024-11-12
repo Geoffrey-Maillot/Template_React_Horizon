@@ -24,10 +24,12 @@ export function Posts({ idUserSeleted, idUserLogged }: PostsProps) {
     fetchStatus: fetchingStatusPosts,
   } = useGetPostsUser(idUserSeleted);
 
+  console.log(idUserLogged, idUserSeleted);
+
   const isLoading = isLoadingPosts && fetchingStatusPosts === "fetching";
   const isWaiting = isLoadingPosts && fetchingStatusPosts === "idle";
   const userLoggedSelected: boolean =
-    idUserLogged && idUserSeleted && idUserLogged === idUserSeleted;
+    Number(idUserLogged) === Number(idUserSeleted);
 
   return (
     <div className="w-full">

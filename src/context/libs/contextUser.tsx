@@ -1,7 +1,7 @@
-import { UserType } from "@src/interface";
+import { User } from "@src/interface";
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 
-interface UserLogged extends Pick<UserType, "username" | "id"> {}
+interface UserLogged extends Pick<User, "username" | "id"> {}
 
 const userContext = createContext<{
   loggedUser: UserLogged;
