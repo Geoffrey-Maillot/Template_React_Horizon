@@ -31,7 +31,8 @@
       "@hoc": ["src/hoc/index.ts"],
       "@hook": ["src/hook/index.ts"],
       "@layout": ["src/layout/index.ts"],
-      "@context": ["src/context/index.ts"]
+      "@context": ["src/context/index.ts"],
+      "@utils": ["src/utils/index.ts"]
     }
   },
   "include": ["src"],

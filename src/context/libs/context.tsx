@@ -20,7 +20,6 @@ const numberContext = createContext<{
 // Provider
 const NumberProvider = ({ children }) => {
   const [number, setNumber] = useState(0);
-  console.log(number);
 
   return (
     <numberContext.Provider value={{ number, setNumber }}>

@@ -1,17 +1,29 @@
-import { Post } from "@src/interface";
+import { z } from "zod";
+import { Post, PostSchema, UserSchema } from "@src/interface";
+import { checkSchemaError } from "@src/utils/libs";
 
 /**
  * User
  */
 export const getUsers = () => {
-  return fetch("http://localhost:3000/users?limit=5").then((response) =>
-    response.json(),
-  );
+  const url = "http://localhost:3000/users?limit=5";
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const result = z.array(UserSchema).safeParse(data);
+      checkSchemaError(result, data, url);
+      return result?.data || data;
+    });
 };
 
 export const getUserPost = (userId: number) => {
-  return fetch(`http://localhost:3000/posts?userId=${userId}limit=5`).then(
-    (response) => response.json(),
+  const url = `http://localhost:3000/posts?userId=${userId}limit=5`;
+  return fetch(url).then((response) =>
+    response.json().then((data) => {
+      const result = z.array(PostSchema).safeParse(data);
+      checkSchemaError(result, data, url);
+      return result?.data || data;
+    }),
   );
 };
 
@@ -19,9 +31,14 @@ export const getUserPost = (userId: number) => {
  * CRUD Post
  */
 export const getPost = (postId: number) => {
-  return fetch(`http://localhost:3000/posts/${postId}`).then((response) =>
-    response.json(),
-  );
+  const url = `http://localhost:3000/posts/${postId}`;
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const result = PostSchema.safeParse(data);
+      checkSchemaError(result, data, url);
+      return result?.data || data;
+    });
 };
 
 export const deletePost = (postId: number) => {

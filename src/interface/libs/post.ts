@@ -19,10 +19,10 @@ import { z } from "zod";
  */
 
 export const PostSchema = z.object({
-  userId: z.number(),
-  id: z.number(),
+  userId: z.number().or(z.string()),
+  id: z.number().or(z.string()),
   title: z.string(),
-  body: z.string(),
+  body: z.string().default(""),
   published: z.boolean(),
 });
 

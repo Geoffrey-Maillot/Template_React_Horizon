@@ -19,11 +19,10 @@ import { z } from "zod";
  */
 
 export const UserSchema = z.object({
-  id: z.number(),
+  id: z.number().or(z.string()),
   name: z.string(),
   username: z.string(),
   email: z.string(),
-  userId: z.number(),
 });
 
 export type User = z.infer<typeof UserSchema>;

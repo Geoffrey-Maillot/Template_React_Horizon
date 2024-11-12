@@ -24,8 +24,6 @@ export function Posts({ idUserSeleted, idUserLogged }: PostsProps) {
     fetchStatus: fetchingStatusPosts,
   } = useGetPostsUser(idUserSeleted);
 
-  console.log(idUserLogged, idUserSeleted);
-
   const isLoading = isLoadingPosts && fetchingStatusPosts === "fetching";
   const isWaiting = isLoadingPosts && fetchingStatusPosts === "idle";
   const userLoggedSelected: boolean =
@@ -46,8 +44,8 @@ export function Posts({ idUserSeleted, idUserLogged }: PostsProps) {
             isWaiting
               ? "Sélectionnez un utilisateur"
               : isErrorLoading
-              ? "Une erreur est survenue pendant le chargement des articles"
-              : "Cet utilisateur n'a posté aucun article"
+                ? "Une erreur est survenue pendant le chargement des articles"
+                : "Cet utilisateur n'a posté aucun article"
           }
         >
           <Column
