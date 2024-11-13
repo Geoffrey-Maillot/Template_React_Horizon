@@ -9,6 +9,13 @@ import {
   HeaderRappelReact,
   Increment,
   Todo,
+  Arrays,
+  MapArray,
+  FilterArray,
+  SpreadRest,
+  Variables,
+  Lifecycle,
+  StatePropsDerived,
 } from "@components";
 
 const PostsPage = WithSuspense(
@@ -48,6 +55,15 @@ export const Router = () => {
       />
 
       <Route path="/rappel" element={<HeaderRappelReact />}>
+        <Route path="arrays" element={<Arrays />}>
+          <Route path="maparray" element={<MapArray />} />
+          <Route path="filterarray" element={<FilterArray />} />
+        </Route>
+
+        <Route path="variables" element={<Variables />} />
+        <Route path="statepropsderived" element={<StatePropsDerived />} />
+        <Route path="livecycle" element={<Lifecycle />} />
+        <Route path="spreadrest" element={<SpreadRest />} />
         <Route path="count" element={<Count />} />
         <Route path="todo" element={<Todo />} />
         <Route path="increment" element={<Increment />} />
