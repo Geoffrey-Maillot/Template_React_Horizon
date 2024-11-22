@@ -95,7 +95,11 @@ export const Lifecycle = () => {
   );
 };
 
-// Styles
+/**
+ * ======================
+ *        STYLES
+ * ======================
+ */
 const sectionStyle = {
   padding: "15px",
   marginBottom: "20px",

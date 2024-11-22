@@ -7,8 +7,8 @@ import { User } from "@src/components/libs/user/user";
 import { Dispatch, SetStateAction } from "react";
 
 interface UserListProps {
-  selectUser: Dispatch<SetStateAction<number>>;
-  idUserLogged: number;
+  selectUser: Dispatch<SetStateAction<number | string>>;
+  idUserLogged: number | string;
   idSelectedUser: number;
 }
 

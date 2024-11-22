@@ -1,10 +1,17 @@
 import { useState, CSSProperties } from "react";
 
-export const Count = () => {
-  const [count, setCount] = useState<number>(0);
+export const CountCustomHook = () => {
+  return (
+    <>
+      <ChildrenCount start={5} step={1} />
+      <ChildrenCount step={5} />
+    </>
+  );
+};
 
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+const ChildrenCount = ({ start = 0, step }) => {
+  const { count, decrement, increment } = useCount(start, step);
+  const [] = useState();
 
   return (
     <div style={styles.app}>
@@ -28,6 +35,14 @@ export const Count = () => {
       </div>
     </div>
   );
+};
+
+const useCount = (start = 0, step = 1) => {
+  const [count, setCount] = useState<number>(start);
+
+  const increment = () => setCount(count + step);
+  const decrement = () => setCount(count - step);
+  return { count, increment, decrement } as const;
 };
 
 /**

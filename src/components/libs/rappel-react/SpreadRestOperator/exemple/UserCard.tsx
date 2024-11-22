@@ -16,7 +16,13 @@ export const ParentUserCard = () => {
 /**
  * Childen component
  */
-const UserCard = ({ name, age, city }) => (
+
+interface UserCardProps {
+  name: string;
+  age: number;
+  city?: string;
+}
+const UserCard = ({ name, age, city }: UserCardProps) => (
   <div
     style={{ border: "1px solid #ccc", padding: "10px", borderRadius: "5px" }}
   >

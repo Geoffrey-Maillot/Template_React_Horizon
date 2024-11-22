@@ -5,6 +5,7 @@ import { Button } from "primereact/button";
 import { useState } from "react";
 
 import logo from "@src/assets/img/fidéciel.svg";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const { logIn, logOut, loggedUser } = useLoggedUser();
@@ -12,9 +13,17 @@ export function Header() {
 
   return (
     <header
-      className={clsx("flex items-center justify-between gap-9", "w-full p-4")}
+      className={clsx(
+        "flex items-center justify-between gap-9",
+        "h-[5.1rem] w-full p-4",
+      )}
     >
-      <img src={logo} alt="logo fidéciel" className="h-10 w-10" />
+      <div className="prose flex items-center gap-2">
+        <img src={logo} alt="logo fidéciel" className="m-0 h-10 w-10" />
+        <Link className="text-blue-600" to="/">
+          Retour{" "}
+        </Link>
+      </div>
 
       <div className={clsx("flex items-center gap-4")}>
         {loggedUser ? (
@@ -22,7 +31,7 @@ export function Header() {
             <div className="h-8 w-8 overflow-hidden  rounded-full">
               <img
                 className="object-fit w-full object-center"
-                src={`https://i.pravatar.cc/${loggedUser.id + 200}`}
+                src={`https://i.pravatar.cc/${+loggedUser.id + 200}`}
                 alt="User"
                 loading="lazy"
               />

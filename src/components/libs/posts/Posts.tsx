@@ -13,7 +13,7 @@ import {
 
 interface PostsProps {
   idUserSeleted: number;
-  idUserLogged: number;
+  idUserLogged: number | string;
 }
 
 export function Posts({ idUserSeleted, idUserLogged }: PostsProps) {

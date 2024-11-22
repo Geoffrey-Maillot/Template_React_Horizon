@@ -1,6 +1,6 @@
 // File: StatePropsDerivedExample.js
 
-import { useState, useMemo, useRef } from "react";
+import { useState, memo, useRef } from "react";
 
 // Composant enfant qui utilise les props
 const ChildComponent = ({ propValue }) => {
@@ -28,31 +28,38 @@ const ChildComponent = ({ propValue }) => {
 };
 
 // Composant enfant qui utilise un état dérivé
-const DerivedStateComponent = ({ baseValue }) => {
-  // Utilisation de useRef pour conserver un compteur de re-rendu persistant
-  const renderCount = useRef(0);
-  renderCount.current += 1; // Incrémentation du compteur à chaque re-rendu
+const DerivedStateComponent = memo(
+  ({ baseValue, ...props }: { baseValue: number; test: string }) => {
+    // Utilisation de useRef pour conserver un compteur de re-rendu persistant
+    const renderCount = useRef(0);
+    renderCount.current += 1; // Incrémentation du compteur à chaque re-rendu
 
-  console.log("DerivedStateComponent re-rendered"); // Affiche un message à chaque re-rendu
+    console.log("DerivedStateComponent re-rendered"); // Affiche un message à chaque re-rendu
 
-  // derivedValue est basé sur baseValue il sera donc redéfinis à chaque fois que baseValue change
-  const derivedValue = baseValue * 2;
+    // derivedValue est basé sur baseValue il sera donc redéfinis à chaque fois que baseValue change
+    const derivedValue = baseValue * 2;
 
-  return (
-    <div style={childStyle}>
-      <h3>Composant Enfant : DerivedStateComponent</h3>
-      <p>
-        <strong>État dérivé (baseValue * 2) :</strong> {derivedValue}
-      </p>
-      <p>
-        <strong>Nombre de re-rendus :</strong> {renderCount.current}
-      </p>
-      <p>
-        Ce composant utilise un état dérivé basé sur les props, mais il est
-        également re-rendu chaque fois que le parent est re-rendu.
-      </p>
-    </div>
-  );
+    return (
+      <div style={childStyle}>
+        <h3>Composant Enfant : DerivedStateComponent</h3>
+        <p>
+          <strong>État dérivé (baseValue * 2) :</strong> {derivedValue}
+        </p>
+        <p>
+          <strong>Nombre de re-rendus :</strong> {renderCount.current}
+        </p>
+        <p>
+          Ce composant utilise un état dérivé basé sur les props, mais il est
+          également re-rendu chaque fois que le parent est re-rendu.
+        </p>
+        <TestComponent {...props} />
+      </div>
+    );
+  },
+);
+
+const TestComponent = ({ test }) => {
+  return <div>{test}</div>;
 };
 
 // Composant parent
@@ -105,7 +112,7 @@ export const StatePropsDerived = () => {
           utilisant <strong>useMemo</strong>. Ce composant enfant se re-rendra
           si la prop <strong>baseValue</strong> change.
         </p>
-        <DerivedStateComponent baseValue={count} />
+        <DerivedStateComponent baseValue={count} test={"toto"} />
       </section>
 
       <section style={sectionStyle}>
@@ -133,7 +140,11 @@ export const StatePropsDerived = () => {
   );
 };
 
-// Styles
+/**
+ * ======================
+ *        STYLES
+ * ======================
+ */
 const containerStyle = {
   padding: "20px",
   fontFamily: "Arial, sans-serif",

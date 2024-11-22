@@ -1,3 +1,5 @@
+import { ComponentPropsWithoutRef } from "react";
+
 /**
  * Parent component
  */
@@ -22,7 +24,12 @@ export const ParentButton = () => {
 /**
  * Childen component
  */
-const Button = ({ label, onClick, ...rest }) => (
+
+interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+  label: string;
+}
+
+const Button = ({ label, onClick, ...rest }: ButtonProps) => (
   <button
     onClick={onClick}
     style={{

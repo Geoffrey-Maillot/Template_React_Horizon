@@ -20,6 +20,7 @@ export default defineConfig({
       "@layout": path.resolve(__dirname, "./src/layout/index.ts"),
       "@context": path.resolve(__dirname, "./src/context/index.ts"),
       "@utils": path.resolve(__dirname, "./src/utils/index.ts"),
+      "@constant": path.resolve(__dirname, "./src/constant/index.ts"),
     },
   },
 });

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Product {
   id: number;
   name: string;
@@ -17,41 +15,6 @@ const products: Product[] = [
 export const FilterArray = () => {
   // Filtre les produits pour ne garder que ceux en promotion (onSale: true)
   const onSaleProducts = products.filter((product) => product.onSale);
-
-  // Styles pour le composant
-  const styles = {
-    container: {
-      display: "flex",
-      gap: "40px",
-      padding: "20px",
-      fontFamily: "Arial, sans-serif",
-    },
-    listContainer: {
-      flex: 1,
-    },
-    title: {
-      textAlign: "center" as const,
-      color: "#333",
-      marginBottom: "10px",
-    },
-    productItem: {
-      padding: "10px",
-      borderBottom: "1px solid #ddd",
-      marginBottom: "8px",
-    },
-    price: {
-      color: "#333",
-      fontWeight: "bold",
-    },
-    saleBadge: {
-      backgroundColor: "#FF9800",
-      color: "white",
-      padding: "2px 6px",
-      borderRadius: "4px",
-      marginLeft: "8px",
-      fontSize: "12px",
-    },
-  };
 
   return (
     <div style={styles.container}>
@@ -87,4 +50,43 @@ export const FilterArray = () => {
       </div>
     </div>
   );
+};
+
+/**
+ * ======================
+ *        STYLES
+ * ======================
+ */
+const styles = {
+  container: {
+    display: "flex",
+    gap: "40px",
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+  },
+  listContainer: {
+    flex: 1,
+  },
+  title: {
+    textAlign: "center" as const,
+    color: "#333",
+    marginBottom: "10px",
+  },
+  productItem: {
+    padding: "10px",
+    borderBottom: "1px solid #ddd",
+    marginBottom: "8px",
+  },
+  price: {
+    color: "#333",
+    fontWeight: "bold",
+  },
+  saleBadge: {
+    backgroundColor: "#FF9800",
+    color: "white",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    marginLeft: "8px",
+    fontSize: "12px",
+  },
 };

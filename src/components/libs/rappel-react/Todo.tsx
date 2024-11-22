@@ -41,71 +41,11 @@ export const Todo = () => {
 
   // Modifier une tâche
   const editTask = (id: number) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id
-          ? { ...task, text: editTaskText, isEditing: false }
-          : task,
-      ),
+    const taskModified = tasks.map((task) =>
+      task.id === id ? { ...task, text: editTaskText, isEditing: false } : task,
     );
+    setTasks(taskModified);
     setEditTaskText("");
-  };
-
-  // Définition des styles en ligne
-  let styles: { [key: string]: CSSProperties } = {
-    app: {
-      textAlign: "center",
-      maxWidth: "400px",
-      margin: "50px auto",
-      fontFamily: "Arial, sans-serif",
-    },
-    title: {
-      color: "#333",
-    },
-    inputContainer: {
-      display: "flex",
-      gap: "8px",
-      marginBottom: "16px",
-    },
-    input: {
-      padding: "8px",
-      fontSize: "16px",
-      flex: 1,
-    },
-    button: {
-      padding: "8px 16px",
-      fontSize: "16px",
-      cursor: "pointer",
-      border: "none",
-      borderRadius: "4px",
-      backgroundColor: "#4CAF50",
-      color: "white",
-      transition: "background 0.3s",
-    },
-    taskList: {
-      listStyleType: "none",
-      padding: 0,
-    },
-    task: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: "8px",
-    },
-    taskText: {
-      fontSize: "18px",
-    },
-  };
-  styles = {
-    ...styles,
-    editButton: {
-      ...styles.button,
-      backgroundColor: "#FF9800",
-    },
-    deleteButton: {
-      ...styles.button,
-      backgroundColor: "#F44336",
-    },
   };
 
   return (
@@ -164,4 +104,65 @@ export const Todo = () => {
       </ul>
     </div>
   );
+};
+
+/**
+ * ======================
+ *        STYLES
+ * ======================
+ */
+let styles: { [key: string]: CSSProperties } = {
+  app: {
+    textAlign: "center",
+    maxWidth: "400px",
+    margin: "50px auto",
+    fontFamily: "Arial, sans-serif",
+  },
+  title: {
+    color: "#333",
+  },
+  inputContainer: {
+    display: "flex",
+    gap: "8px",
+    marginBottom: "16px",
+  },
+  input: {
+    padding: "8px",
+    fontSize: "16px",
+    flex: 1,
+  },
+  button: {
+    padding: "8px 16px",
+    fontSize: "16px",
+    cursor: "pointer",
+    border: "none",
+    borderRadius: "4px",
+    backgroundColor: "#4CAF50",
+    color: "white",
+    transition: "background 0.3s",
+  },
+  taskList: {
+    listStyleType: "none",
+    padding: 0,
+  },
+  task: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "8px",
+  },
+  taskText: {
+    fontSize: "18px",
+  },
+};
+styles = {
+  ...styles,
+  editButton: {
+    ...styles.button,
+    backgroundColor: "#FF9800",
+  },
+  deleteButton: {
+    ...styles.button,
+    backgroundColor: "#F44336",
+  },
 };

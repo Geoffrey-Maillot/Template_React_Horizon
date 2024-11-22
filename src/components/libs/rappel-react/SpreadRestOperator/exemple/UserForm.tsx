@@ -7,19 +7,13 @@ export const UserForm = () => {
   // Mettre à jour le champ spécifique de l'utilisateur
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // setUser({ ...user, [name]: value });
+
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: value, // Met à jour uniquement la propriété modifiée
+      [name]: value, // Met à jour uniquement la propriété modifiée'
     }));
-  };
-
-  const styles: Record<string, CSSProperties> = {
-    input: {
-      background: "#fff",
-      borderBottom: "1px solid #777",
-      outline: "none",
-      marginLeft: "12px",
-    },
   };
 
   return (
@@ -75,3 +69,18 @@ export const UserForm = () => {
  *
  * Avantage : Utiliser le spread operator permet de manipuler facilement des états complexes sans écraser les propriétés existantes.
  */
+
+/**
+ * ======================
+ *        STYLES
+ * ======================
+ */
+
+const styles: Record<string, CSSProperties> = {
+  input: {
+    background: "#fff",
+    borderBottom: "1px solid #777",
+    outline: "none",
+    marginLeft: "12px",
+  },
+};

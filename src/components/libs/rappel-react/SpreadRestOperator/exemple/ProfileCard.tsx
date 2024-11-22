@@ -10,7 +10,7 @@ export const ParentProfileCard = () => {
       <h1>Profil Utilisateur</h1>
       {/* Utilise spread pour transmettre `user` et des props supplémentaires */}
       <ProfileCard
-        user={{ ...user }}
+        user={user}
         data-testid="profile-card"
         title="Carte de Profil"
       />

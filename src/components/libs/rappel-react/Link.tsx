@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { Link as OriginalLink, LinkProps } from "react-router-dom";
+import { NavLink as OriginalLink, LinkProps } from "react-router-dom";
 
 export const Link = ({ ...props }: LinkProps) => {
   const style: Record<string, CSSProperties> = {
@@ -24,10 +24,20 @@ export const Link = ({ ...props }: LinkProps) => {
       touchAction: "manipulation",
       whiteSpace: "nowrap",
     },
+    isActiveLink: {
+      boxShadow: "0 0 0px 3px white ,0 0 0px 6px black",
+    },
   };
 
   return (
-    <OriginalLink style={style.link} {...props}>
+    <OriginalLink
+      style={({ isActive }) => {
+        return isActive
+          ? { ...style.link, ...style.isActiveLink }
+          : { ...style.link };
+      }}
+      {...props}
+    >
       {props.title}
     </OriginalLink>
   );

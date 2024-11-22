@@ -1,10 +1,10 @@
+import { User as UserInterface } from "@src/interface";
 import clcx from "clsx";
 import { Dispatch, SetStateAction } from "react";
-interface UserItemProps {
-  name: string;
-  id: number;
+
+interface UserItemProps extends UserInterface {
   isLogged?: boolean;
-  selectUser: Dispatch<SetStateAction<number>>;
+  selectUser: Dispatch<SetStateAction<number | string>>;
   isSelected?: boolean;
 }
 
@@ -18,8 +18,8 @@ export function User({
   const backgroundColor = isLogged
     ? "bg-green-100"
     : isSelected
-    ? "bg-neutral-200"
-    : "bg-neutral-100";
+      ? "bg-neutral-200"
+      : "bg-neutral-100";
   const backgroundColorHover = isLogged ? "" : "hover:bg-neutral-200";
   const borderColor = isLogged ? "border-b-green-200" : "border-b-slate-400";
 
@@ -40,7 +40,7 @@ export function User({
       <div className="h-12 w-12 overflow-hidden  rounded-full">
         <img
           className="object-fit w-full object-center"
-          src={`https://i.pravatar.cc/${id + 200}`}
+          src={`https://i.pravatar.cc/${+id + 200}`}
           alt="User"
           loading="lazy"
         />

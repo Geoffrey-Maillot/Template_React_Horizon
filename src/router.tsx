@@ -16,7 +16,10 @@ import {
   Variables,
   Lifecycle,
   StatePropsDerived,
+  Home,
+  CountCustomHook,
 } from "@components";
+import { pathRappelReact } from "@src/constant";
 
 const PostsPage = WithSuspense(
   lazy(() =>
@@ -43,7 +46,7 @@ export const Router = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/posts" replace />} />
+      <Route path="/" element={<Home />} />
       <Route path="/posts" element={<PostsPage />} />
       <Route
         path="/post/:postId?"
@@ -53,7 +56,6 @@ export const Router = () => {
           </ProtectedRoute>
         }
       />
-
       <Route path="/rappel" element={<HeaderRappelReact />}>
         <Route path="arrays" element={<Arrays />}>
           <Route path="maparray" element={<MapArray />} />
@@ -65,6 +67,7 @@ export const Router = () => {
         <Route path="livecycle" element={<Lifecycle />} />
         <Route path="spreadrest" element={<SpreadRest />} />
         <Route path="count" element={<Count />} />
+        <Route path="countcustomhook" element={<CountCustomHook />} />
         <Route path="todo" element={<Todo />} />
         <Route path="increment" element={<Increment />} />
         <Route path="convertisseur" element={<Convertisseur />} />

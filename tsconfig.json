@@ -32,7 +32,8 @@
       "@hook": ["src/hook/index.ts"],
       "@layout": ["src/layout/index.ts"],
       "@context": ["src/context/index.ts"],
-      "@utils": ["src/utils/index.ts"]
+      "@utils": ["src/utils/index.ts"],
+      "@constant": ["src/constant/index.ts"]
     }
   },
   "include": ["src"],
