@@ -30,7 +30,7 @@ export const getUserPost = (userId: number) => {
 /**
  * CRUD Post
  */
-export const getPost = (postId: number) => {
+export const getPost = (postId: string) => {
   const url = `http://localhost:3000/posts/${postId}`;
   return fetch(url)
     .then((response) => response.json())
@@ -41,7 +41,7 @@ export const getPost = (postId: number) => {
     });
 };
 
-export const deletePost = (postId: number) => {
+export const deletePost = (postId: string | number) => {
   return fetch(`http://localhost:3000/posts/${postId}`, {
     method: "DELETE",
     headers: {

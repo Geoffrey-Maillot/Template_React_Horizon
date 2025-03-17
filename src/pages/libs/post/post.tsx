@@ -19,7 +19,7 @@ export function PostPage() {
         <PageTitle title={postId ? "Modifier article" : "Nouvelle article"} />
       </HeaderLayout>
       <ContentLayout>
-        <Form postId={Number(postId)} userId={Number(userId)}>
+        <Form postId={postId} userId={Number(userId)}>
           <div className={clsx("flex justify-center")}>
             <div
               className={clsx(

@@ -24,6 +24,8 @@ export function Posts({ idUserSeleted, idUserLogged }: PostsProps) {
     fetchStatus: fetchingStatusPosts,
   } = useGetPostsUser(idUserSeleted);
 
+  const object = useGetPostsUser(idUserSeleted);
+
   const isLoading = isLoadingPosts && fetchingStatusPosts === "fetching";
   const isWaiting = isLoadingPosts && fetchingStatusPosts === "idle";
   const userLoggedSelected: boolean =

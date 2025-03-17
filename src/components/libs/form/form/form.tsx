@@ -9,7 +9,7 @@ import { useGetPost } from "@src/services/data-access";
 
 import { usePatchPostUser, useAddPostUser } from "@src/services/data-access";
 interface Props extends PropsWithChildren {
-  postId: number;
+  postId: string;
   userId: number;
 }
 

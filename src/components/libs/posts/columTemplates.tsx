@@ -7,7 +7,6 @@ import { useDeletePostUser } from "../../../services/data-access/libs/hook/hook"
 import { useRef, useState } from "react";
 import { Button } from "primereact/button";
 
-
 export const ModifyButton = (post: Post, idUserLogged) => {
   return (
     <Link
@@ -24,7 +23,7 @@ export const ModifyButton = (post: Post, idUserLogged) => {
 };
 
 export const DeleteButton = (post: Post, idUserLogged) => {
-  const { mutate: deletePost } = useDeletePostUser(idUserLogged);
+  const { mutate: deletePost } = useDeletePostUser();
   const [visible, toggleVisible] = useState<boolean>();
   const btn = useRef();
   return (

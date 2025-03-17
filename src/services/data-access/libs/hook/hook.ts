@@ -29,13 +29,13 @@ export const useGetPostsUser = (userId: number) => {
 /**
  * CRUD Post
  */
-export const useGetPost = (postId: number) => {
+export const useGetPost = (postId: string) => {
   return useQuery<Post, Error>(["getPost", postId], () => getPost(postId), {
     enabled: !!postId,
   });
 };
 
-export const useDeletePostUser = (userId) => {
+export const useDeletePostUser = () => {
   const queryCache = useQueryClient();
   const displayToast = useToastContext();
   return useMutation(deletePost, {
@@ -45,7 +45,7 @@ export const useDeletePostUser = (userId) => {
         summary: "Succès",
         detail: "L'article a été supprimer.",
       });
-      queryCache.invalidateQueries(["userPosts", userId]);
+      queryCache.invalidateQueries(["userPosts"]);
     },
     onError: (error) => {
       console.error(error);
@@ -58,7 +58,7 @@ export const useDeletePostUser = (userId) => {
   });
 };
 
-export const usePatchPostUser = (postId: number) => {
+export const usePatchPostUser = (postId: string) => {
   const queryCache = useQueryClient();
   const displayToast = useToastContext();
 
